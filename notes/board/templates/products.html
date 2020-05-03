@@ -1,0 +1,50 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Notes</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Name</th>
+							<th>description</th>
+							<th>deadline</th>
+                            <th>update</th>
+                            <th>remove</th>
+						</tr>
+
+						{% for i in note_list %}
+							<tr>
+								<td>{{i.name}}</td>
+								<td>{{i.description}}</td>
+								<td>{{i.deadline}}</td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'note-update' i.id %}">Update</a></td>
+					            <td><a class="btn btn-sm btn-danger" href="{% url 'note-delete' i.id %}">Delete</a></td>
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+		</div>
+{#        <div class="row">#}
+{#            <div class="col-md">#}
+{#				<div class="card card-body">#}
+{#					<h5>Notification to email</h5>#}
+{#                </div>#}
+{#                    <div>#}
+{#                        <form action='{% url "note-list" %}' method="post">#}
+{#                            {% csrf_token %}#}
+{#                            {{ form.as_p }}#}
+{#                            <button type="submit">Send</button>#}
+{#                        </form>#}
+{#                    </div>#}
+{#            </div>#}
+{#        </div>#}
+{% endblock content %}
